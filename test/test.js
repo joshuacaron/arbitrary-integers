@@ -257,6 +257,57 @@ describe('Methods for Integers', function(){
       done();
     });
     
+    it('should subtract a positive and a negative number', function(done){
+      assert.equal(111, int.add(d,e).toFloat());
+      assert.equal(-6995, int.add(f,d).toFloat());
+      done();
+    });
+    
+    it('should return 0 when adding a number to its additive inverse', function(done){
+      assert.equal(0, int.add(a,i).toFloat());
+      done();
+    });
+    
+  });
+  
+  
+  
+  describe('subtract(a,b)',function(){
+    it('should return the correct result if a > b > 0', function(done){
+      assert.equal(122790, int.subtract(a,b).toFloat());
+      assert.equal(123012, int.subtract(a,d).toFloat());
+      assert.equal(222, int.subtract(b,d).toFloat());
+      done();
+    });
+    
+    it('should return -result if the order of a and b are switched', function(done){
+      assert.equal(-122790, int.subtract(b,a).toFloat());
+      assert.equal(-123012, int.subtract(d,a).toFloat());
+      assert.equal(-222, int.subtract(d,b).toFloat());
+      done();
+    });
+    
+    it('should return the same number when subtracting zero', function(done){
+      assert.equal(666, int.subtract(b,g).toFloat());
+      assert.equal(-123456, int.subtract(i, g).toFloat());
+      assert.equal(-333, int.subtract(e, g).toFloat());
+      done();
+    });
+    
+    it('should return the sum of the numbers when a > 0 and b < 0', function(done){
+      assert.equal(int.add(b,a).toFloat(),int.subtract(b,i).toFloat());
+      assert.equal(int.add(d,a).toFloat(),int.subtract(d,i).toFloat());
+      done();
+    });
+    
+    it('should return 0 when subtracting a number from itself', function(done){
+      assert.equal(0, int.subtract(a,a).toFloat());
+      assert.equal(0, int.subtract(d,d).toFloat());
+      assert.equal(0, int.subtract(g,g).toFloat());
+      assert.equal(0, int.subtract(e,e).toFloat());
+      done();
+    });
+    
   });
   
 });

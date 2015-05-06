@@ -120,6 +120,30 @@ function greaterThan(a,b){
   }
 }
 
+
+// magGT -> Integer -> Integer -> Boolean
+// calculates whether the magnitude of an Integer is larger than another, ignoring signs
+function magGT (a,b){
+  if(equal(a,b)===true){
+    return false;
+  }
+  else if(a.digits()>b.digits()){
+    return true;
+  }
+  else if (a.digits() === b.digits()){
+    for (var i = 0; i < a.digits(); ++ i){
+      if (a.value[i] < b.value[i]){
+        return false;
+      }
+    }
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
 // lessThan -> Integer -> Integer -> Boolean
 function lessThan(a,b){
   if (greaterThan(a,b) || equal(a,b)){
@@ -188,15 +212,29 @@ function add(a,b){
 
 // subtract -> Integer -> Integer -> Integer
 // Subtracts two Integers
-// Need to work on negative numbers support (esp. subtracting a number that is larger than original)
 function subtract(a,b){
-  // Only works at the moment if mag(a)>mag(b)
   var fst = clone(a);
   var snd = clone(b);
   var diff = [];
   var output = new Integer();
   
-  if(fst.sign === '+' && snd.sign === '+'){
+  if(equal(fst,snd)){
+    output.value = [0];
+  }
+  else if(fst.sign === '+' && snd.sign === '-'){
+    snd.sign = '+';
+    return add(fst,snd);
+  }
+  else if(fst.sign === '-' && snd.sign === '+'){
+    snd.sign = '-';
+    return add(fst,snd);
+  }
+  else if (fst.sign === '-' && snd.sign === '-'){
+    snd.sign = '+';
+    first.sign = '+';
+    return subtract(snd,fst);
+  }
+  else if(fst.sign === '+' && snd.sign === '+' && magGT(fst,snd)){
     var fstComplement = new Integer();
     
     fillZeros(fst,snd);
@@ -205,10 +243,7 @@ function subtract(a,b){
       fstComplement.value[i] = 9 - fst.value[i];
     }
     
-    console.log(fstComplement);
-    
     var interim = add(fstComplement,snd);
-    console.log(interim);
     
     for(var j = 0; j < interim.digits(); ++ j){
       if(diff!==[] || interim.value[j]!==9){
@@ -218,6 +253,10 @@ function subtract(a,b){
    
    output.value = diff;
     
+  }
+  else {
+    output = subtract(snd,fst);
+    output.sign = '-';
   }
   
   return output;
@@ -231,4 +270,5 @@ module.exports = {
   , greaterThan:  greaterThan
   , lessThan:     lessThan
   , add:          add
+  , subtract:     subtract
 };
