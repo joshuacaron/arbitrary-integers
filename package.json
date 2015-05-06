@@ -1,0 +1,24 @@
+{
+  "name": "arbitrary-int",
+  "version": "0.0.1",
+  "description": "A small Javascript library enabling arbitrarily large integers, and operations for them.",
+  "main": "main.js",
+  "dependencies": {
+    "clone": "^1.0.2"
+  },
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "mocha": "^2.2.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "integers",
+    "natural",
+    "numbers",
+    "math"
+  ],
+  "author": "Joshua Caron",
+  "license": "MIT"
+}
