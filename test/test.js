@@ -118,6 +118,7 @@ describe('Methods for Integers', function(){
     g = new int.Integer(0);
     h = new int.Integer(444);
     i = new int.Integer (-123456);
+    j = new int.Integer(1);
     done();
   });
   
@@ -307,6 +308,57 @@ describe('Methods for Integers', function(){
       assert.equal(0, int.subtract(e,e).toFloat());
       done();
     });
+    
+  });
+  
+  
+  describe('multiply(a,b)', function(){
+    it('should return 0 if either number is zero', function(done){
+      assert.deepEqual(g, int.multiply(a,g));
+      assert.deepEqual(g, int.multiply(g,e));
+      assert.deepEqual(g, int.multiply(g,g));
+      done();
+    });
+    
+    it('should return the other input, if one of the inputs is one, and the other is non-zero', function(done){
+      assert.deepEqual(a, int.multiply(a,j));
+      assert.deepEqual(e, int.multiply(e,j));
+      assert.deepEqual(j, int.multiply(j,j));
+      assert.deepEqual(i, int.multiply(j,i));
+      done();
+    });
+    
+    it('should return a positive product if both inputs are positive', function(done){
+      assert.equal(295704, int.multiply(b,d).toFloat());
+      assert.equal(54814464, int.multiply(a,d).toFloat());
+      assert.equal(123456, int.multiply(j,a).toFloat());
+      done();
+    });
+    
+    it('should return a positive product if both inputs are negative', function(done){
+      assert.equal(2477187, int.multiply(e,f).toFloat());
+      assert.equal(41110848, int.multiply(i,e).toFloat());
+      assert.equal(918389184, int.multiply(f,i).toFloat());
+      done();
+    });
+    
+    it('should return a negative product if only one input is negative', function(done){
+      assert.equal(-221778, int.multiply(b,e).toFloat());
+      assert.equal(-3302916, int.multiply(f,d).toFloat());
+      assert.equal(-15241383936, int.multiply(a,i).toFloat());
+      done();
+    });
+    
+    it('should be symmetric', function(done){
+      assert.deepEqual(int.multiply(a,f), int.multiply(f,a));
+      assert.deepEqual(int.multiply(b,e), int.multiply(e,b));
+      assert.deepEqual(int.multiply(i,g), int.multiply(g,i));
+      assert.deepEqual(int.multiply(d,h), int.multiply(h,d));
+      assert.deepEqual(int.multiply(a,a), int.multiply(a,a));
+      done();
+    });
+    
+    
     
   });
   

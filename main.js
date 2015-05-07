@@ -1,5 +1,9 @@
 var clone = require('clone');
 
+var ZERO = new Integer(0);
+var ONE = new Integer(1);
+
+
 function Integer(n){
   this.sign = '+';
   if(n === undefined){
@@ -263,6 +267,95 @@ function subtract(a,b){
 }
 
 
+function addNZeros(n){
+  output = [];
+  for (var i = 0; i < n; ++i){
+    output.push(0);
+  }
+  return output;
+}
+
+
+function sumArray(list){
+  var sum = new Integer();
+  sum.value = list[0];
+  
+  for(var i = 1; i < list.length; ++ i){
+    var temp = new Integer();
+    temp.value = list[i];
+    
+    sum = add(sum,temp);
+  }
+  
+  return sum;
+}
+
+function multiply(a, b){
+  if (equal(a,ZERO) || equal(b,ZERO)) {
+    return ZERO;
+  }
+  else if (equal(a,ONE)) {
+    return b;
+  }
+  else if (equal(b,ONE)) {
+    return a;
+  }
+  else {
+    var intermediates = [];
+    var product = new Integer();
+    
+    if((a.sign === '+' && b.sign === '+') || (a.sign === '-' && b.sign === '-')){
+      product.sign = '+';
+    }
+    else {
+      product.sign = '-';
+    }
+    
+    // The less digits, the less addition we need to carry out afterwards, so want snd to have fewest digits.
+    if(a.digits() < b.digits()){
+      fst = clone(b);
+      snd = clone(a);
+    }
+    else {
+      fst = clone(a);
+      snd = clone(b);
+    }
+    
+    
+    for (var i = snd.digits() - 1; i >= 0; --i) {
+      var output = addNZeros(snd.digits() - 1 - i);
+      var carry = 0;
+      
+      for (var j = fst.digits() - 1; j >= 0; --j) {
+        var temp = (fst.value[j] * snd.value[i]);
+        temp += carry;
+        carry = 0;
+        
+        while(temp >= 10){
+          temp = temp - 10;
+          ++carry;
+        }
+
+        output.unshift(temp);
+        
+        if(j === 0 && carry > 0){
+          output.unshift(carry);
+          carry = 0;
+        }
+        
+      }
+      
+      intermediates.push(output);
+      
+    }
+    var sum = sumArray(intermediates);
+    product.value = sum.value;
+    return product;
+  }
+  
+}
+
+
 
 module.exports = {
     Integer:      Integer
@@ -271,4 +364,5 @@ module.exports = {
   , lessThan:     lessThan
   , add:          add
   , subtract:     subtract
+  , multiply:     multiply
 };
