@@ -358,7 +358,41 @@ describe('Methods for Integers', function(){
       done();
     });
     
+  });
+  
+  
+  describe('frac(a,b)', function(){
     
+    it('should return the same number if dividing by one', function(done){
+      assert.deepEqual(a, int.frac(a,j));
+      assert.deepEqual(f, int.frac(f,j));
+      assert.deepEqual(g, int.frac(g,j));
+      assert.deepEqual(b, int.frac(b,j));
+      done();
+    });
+    
+    
+    it('should return 0 when 0 is the numerator', function(done){
+      assert.deepEqual(g, int.frac(g, a));
+      assert.deepEqual(g, int.frac(g, f));
+      assert.deepEqual(g, int.frac(g, e));
+      assert.deepEqual(g, int.frac(g, j));
+      done();
+    });
+    
+    it('should return 0 when a,b > 0 && b > a', function(done){
+      assert.deepEqual(g, int.frac(b,a));
+      assert.deepEqual(g, int.frac(j,d));
+      assert.deepEqual(g, int.frac(d,b));
+      done();
+    });
+    
+    it('should divide two positive numbers correctly', function(done){
+      // assert.equal(1, int.frac(b,d).toFloat());
+      // assert.equal(278, int.frac(a,h).toFloat());
+      assert.equal(185, int.frac(a,b).toFloat());
+      done();
+    });
     
   });
   

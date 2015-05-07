@@ -74,6 +74,28 @@ function fillZeros(a, b){
   }
 }
 
+function fillZerosNEnd(a, b,n){
+  if(a instanceof Integer && b instanceof Integer){
+    var numZeros = n;
+    if (numZeros === 0){
+      return;
+    }
+    else if (numZeros > 0){
+      for (var i = 0; i < numZeros; ++i){
+        b.value.push(0);
+      }
+    }
+    else if (numZeros < 0){
+      for (var j = 0; j < -1*numZeros; ++j){
+        a.value.push(0);
+      }
+    }
+  }
+  else {
+    console.error(new Error("Both inputs must be Integers."));
+  }
+}
+
 
 // equal -> Integer -> Integer -> Boolean
 // Tests equality for Integers
@@ -112,8 +134,11 @@ function greaterThan(a,b){
         if (a.value[i] < b.value[i]){
           return false;
         }
+        else if (a.value[i] > b.value[i]){
+          return true;
+        }
       }
-      return true;
+      return false;
     }
     else {
       return false;
@@ -238,8 +263,9 @@ function subtract(a,b){
     first.sign = '+';
     return subtract(snd,fst);
   }
-  else if(fst.sign === '+' && snd.sign === '+' && magGT(fst,snd)){
+  else if(fst.sign === '+' && snd.sign === '+' && greaterThan(fst,snd)){
     var fstComplement = new Integer();
+    // console.log(fstComplement);
     
     fillZeros(fst,snd);
     
@@ -355,6 +381,119 @@ function multiply(a, b){
   
 }
 
+// truncateN -> Integer -> int -> Integer
+// Truncates an integer to n digits
+function truncateN(int, n){
+  var output = clone(int);
+  if(n < output.digits()){
+    // console.log("hi");
+    var newVal = [];
+    for (var i = 0; i < n; ++i){
+      newVal.push(output.value[i]);
+    }
+    output.value = newVal;
+  }
+  return output;
+}
+// trim -> Integer -> Integer
+// gets rid of leading zeros
+function trim(n){
+  var val = [];
+  for (var i = 0; i < n.digits(); ++ i){
+    if(n.value[i] !== 0 || val.length !== 0){
+      val.push(n.value[i]);
+    }
+  }
+  if(val === []){
+    val = [0];
+  }
+  n.value = val;
+}
+
+// fractional -> Integer -> Integer -> Char -> Integer
+// Divides a by b using long division and returns the fractional part (f) or the remainder (r). Should switch to Newton-Raphson for large numbers.
+function divide(a,b,keep){
+  var output = new Integer();
+  var remainder = new Integer();
+  
+  if(greaterThan(b,a) && a.sign === '+' && b.sign === '+'){
+    output = clone(ZERO);
+    remainder = clone(a);
+  }
+  else if (equal(b,ZERO)){
+    return new Error("Cannot divide by zero.");
+  }
+  else if (equal(b,ONE)){
+    output = clone(a);
+    remainder = clone(ZERO);
+  }
+  else if (equal(a,ZERO)){
+    output = clone(ZERO);
+    remainder = clone(ZERO);
+  }
+  else {
+    var num = clone(a);
+    var denom = clone(b);
+    var len = denom.digits();
+    
+    while(greaterThan(num, denom)){
+      console.log(num);
+      console.log(denom);
+      var tempNum = truncateN(num, len);
+      var subCount = 0;
+      var interim = new Integer(0);
+      
+      if(greaterThan(tempNum, denom) || equal(tempNum,denom)){
+
+        while(greaterThan(tempNum, denom) || equal(tempNum,denom)){
+          tempNum = subtract(tempNum, denom);
+          trim(tempNum);
+          interim = add(interim,denom);
+          ++subCount;
+          console.log(subCount);
+        }
+        output.value.push(subCount);
+        console.log("output + : " + subCount);
+        console.log(num);
+        console.log(interim);
+        console.log(num.digits() - len);
+        
+        fillZerosNEnd(num,interim,num.digits()-len);
+        console.log(num);
+        console.log(interim);
+        num = subtract(num,interim);
+        console.log(num);
+        trim(num);
+        
+        len = denom.digits();
+      }
+      else {
+        ++len;
+      }
+    }
+    
+    remainder = clone(num);
+    if(remainder.value === []){
+      remainder.value = [0];
+    }
+  }
+  
+  if(keep === 'r'){
+    return remainder;
+  }
+  else {
+    return output;
+  }
+}
+
+function mod(a,b){
+  return divide(a,b,'r');
+}
+
+function frac(a,b){
+  return divide(a,b,'f');
+}
+
 
 
 module.exports = {
@@ -365,4 +504,6 @@ module.exports = {
   , add:          add
   , subtract:     subtract
   , multiply:     multiply
+  , frac:         frac
+  , mod:          mod
 };
