@@ -2,6 +2,7 @@ var clone = require('clone');
 
 var ZERO = new Integer(0);
 var ONE = new Integer(1);
+var NEG_ONE = new Integer(-1);
 
 
 function Integer(n){
@@ -413,12 +414,35 @@ function trim(n){
 // fractional -> Integer -> Integer -> Char -> Integer
 // Divides a by b using long division and returns the fractional part (f) or the remainder (r). Should switch to Newton-Raphson for large numbers.
 function divide(a,b,keep){
+  if(equal(a,ZERO) === false && ((a.sign === '+' && b.sign === '-' ) || (a.sign === '-' && b.sign === '+'))){
+    new_a = clone(a);
+    new_a.sign = '+';
+    new_b = clone(b);
+    new_b.sign = '+';
+    
+    var output = divide(new_a,new_b,keep);
+    output.sign = '-';
+    return output;
+  }
+  else if(equal(a,ZERO) === false && a.sign === '-' && b.sign === '-'){
+    new_a = clone(a);
+    new_a.sign = '+';
+    new_b = clone(b);
+    new_b.sign = '+';
+    
+    return divide(new_a,new_b,keep);
+  }
+  
+  
   var output = new Integer();
   var remainder = new Integer();
   
   if(greaterThan(b,a) && a.sign === '+' && b.sign === '+'){
     output = clone(ZERO);
     remainder = clone(a);
+  }
+  else if (equal(a,b)){
+    output = clone(ONE);
   }
   else if (equal(b,ZERO)){
     return new Error("Cannot divide by zero.");
@@ -437,8 +461,6 @@ function divide(a,b,keep){
     var len = denom.digits();
     
     while(greaterThan(num, denom)){
-      console.log(num);
-      console.log(denom);
       var tempNum = truncateN(num, len);
       var subCount = 0;
       var interim = new Integer(0);
@@ -450,21 +472,13 @@ function divide(a,b,keep){
           trim(tempNum);
           interim = add(interim,denom);
           ++subCount;
-          console.log(subCount);
         }
         output.value.push(subCount);
-        console.log("output + : " + subCount);
-        console.log(num);
-        console.log(interim);
-        console.log(num.digits() - len);
         
         fillZerosNEnd(num,interim,num.digits()-len);
-        console.log(num);
-        console.log(interim);
         num = subtract(num,interim);
-        console.log(num);
         trim(num);
-        
+
         len = denom.digits();
       }
       else {
@@ -472,10 +486,19 @@ function divide(a,b,keep){
       }
     }
     
+    // Add trailing zeros;
+    while(a.digits() - b.digits() > output.digits()){
+      output.value.push(0);
+    }
+
+    
     remainder = clone(num);
     if(remainder.value === []){
       remainder.value = [0];
     }
+    
+
+    
   }
   
   if(keep === 'r'){

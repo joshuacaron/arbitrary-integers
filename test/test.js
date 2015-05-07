@@ -119,6 +119,8 @@ describe('Methods for Integers', function(){
     h = new int.Integer(444);
     i = new int.Integer (-123456);
     j = new int.Integer(1);
+    k = new int.Integer(333);
+    l = new int.Integer(-1);
     done();
   });
   
@@ -358,6 +360,12 @@ describe('Methods for Integers', function(){
       done();
     });
     
+    it('should return -num if the other number is -1', function(done){
+      assert.deepEqual(i, int.multiply(a,l));
+      assert.deepEqual(e, int.multiply(l,k));
+      done();
+    });
+    
   });
   
   
@@ -388,12 +396,36 @@ describe('Methods for Integers', function(){
     });
     
     it('should divide two positive numbers correctly', function(done){
-      // assert.equal(1, int.frac(b,d).toFloat());
-      // assert.equal(278, int.frac(a,h).toFloat());
+      assert.equal(1, int.frac(b,d).toFloat());
+      assert.equal(278, int.frac(a,h).toFloat());
       assert.equal(185, int.frac(a,b).toFloat());
+      assert.equal(370, int.frac(a,k).toFloat());
       done();
     });
     
+    it('should return a negative number when dividing a negative number by a positive number', function(done){
+      assert.equal(-370, int.frac(a,e).toFloat());
+      assert.equal(-2, int.frac(b,e).toFloat());
+      assert.equal(-1, int.frac(a,i).toFloat());
+      assert.equal(-16, int.frac(a,f).toFloat());
+      done();
+    });
+    
+    it('should return 1 if dividing a number by itself', function(done){
+      assert.deepEqual(j, int.frac(a,a));
+      assert.deepEqual(j, int.frac(e,e));
+      assert.deepEqual(j, int.frac(i,i));
+      assert.deepEqual(j, int.frac(j,j));
+      assert.deepEqual(j, int.frac(l,l));
+      done();
+    });
+    
+    it('should return a positive number if dividing two negative numbers', function(done){
+      assert.equal(22, int.frac(f,e).toFloat());
+      assert.equal(16, int.frac(i,f).toFloat());
+      assert.equal(370, int.frac(i,e).toFloat());
+      done();
+    });
   });
   
 });
