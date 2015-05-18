@@ -121,6 +121,10 @@ describe('Methods for Integers', function(){
     j = new int.Integer(1);
     k = new int.Integer(333);
     l = new int.Integer(-1);
+    m = new int.Integer(222);
+    n = new int.Integer(111);
+    o = new int.Integer(0);
+    o.sign = '-'
     done();
   });
   
@@ -428,4 +432,70 @@ describe('Methods for Integers', function(){
     });
   });
   
+
+  describe('mod(a,b)', function(){
+
+    it('should return 0 if a is a multiple of b', function(done){
+      assert.deepEqual(g, int.mod(h,n))
+      assert.deepEqual(g, int.mod(k,n))
+      assert.deepEqual(g, int.mod(m,n))
+      assert.deepEqual(g, int.mod(b,k))
+      assert.deepEqual(g, int.mod(h,m))
+      done()
+    })
+
+    it('should return the correct value of a,b > 0, a > b', function(done){
+      assert.deepEqual(n, int.mod(h,k))
+      assert.deepEqual(m, int.mod(b,d))
+      assert.equal(246, int.mod(a,b).toFloat())
+      done()
+    })
+
+    it('should return 0 if b=1', function(done){
+      assert.deepEqual(g, int.mod(a,j))
+      assert.deepEqual(g, int.mod(k,j))
+      assert.deepEqual(g, int.mod(b,j))
+      assert.deepEqual(g, int.mod(n,j))
+      done()
+    })
+
+    it('should return 0 if a === b and a > 0', function(done){
+      assert.deepEqual(g, int.mod(a,a))
+      assert.deepEqual(g, int.mod(h,h))
+      done()
+    })
+
+    it('should return -0 if a===b and a < 0', function(done){
+      assert.deepEqual(o, int.mod(e,e))
+      assert.deepEqual(o, int.mod(i,i))
+      done()
+    })
+
+    it('should return a if a < b and b > 0', function(done){
+      assert.deepEqual(b, int.mod(b,a))
+      assert.deepEqual(d, int.mod(d,a))
+      assert.deepEqual(k, int.mod(k,a))
+      assert.deepEqual(k, int.mod(k,b))
+      assert.deepEqual(d, int.mod(d,b))
+      assert.deepEqual(e, int.mod(e,a))
+      assert.deepEqual(e, int.mod(e,b))
+      done()
+    })
+
+    it('should return the correct value if a < b < 0', function(done){
+      assert.equal(-246, int.mod(i,e).toFloat())
+      assert.equal(-4432, int.mod(i,f).toFloat())
+      assert.equal(-113, int.mod(f,e).toFloat())
+      done()
+    })
+
+    it('should return a if b < a < 0', function(done){
+      assert.deepEqual(e, int.mod(e,i))
+      assert.deepEqual(e, int.mod(e,f))
+      assert.deepEqual(f, int.mod(f,i))
+      done()
+    })
+
+  })
+
 });

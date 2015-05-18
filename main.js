@@ -1,6 +1,4 @@
-var clone = require('clone');
 var Integer = require('./lib/integer.js');
-var constants = require('./lib/constants.js');
 var add = require('./lib/add.js');
 var subtract = require('./lib/subtract.js');
 var is = require('./lib/compare.js');
