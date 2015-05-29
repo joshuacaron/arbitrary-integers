@@ -109,22 +109,24 @@ describe('Integer', function(){
 
 describe('Methods for Integers', function(){
   before(function(done){
-    a = new int.Integer(123456);
-    b = new int.Integer(666);
-    c = new int.Integer();
-    d = new int.Integer(444);
-    e = new int.Integer(-333);
-    f = new int.Integer(-7439);
-    g = new int.Integer(0);
-    h = new int.Integer(444);
-    i = new int.Integer (-123456);
-    j = new int.Integer(1);
-    k = new int.Integer(333);
-    l = new int.Integer(-1);
-    m = new int.Integer(222);
-    n = new int.Integer(111);
-    o = new int.Integer(0);
+    a = new int.Integer(123456)
+    b = new int.Integer(666)
+    c = new int.Integer()
+    d = new int.Integer(444)
+    e = new int.Integer(-333)
+    f = new int.Integer(-7439)
+    g = new int.Integer(0)
+    h = new int.Integer(444)
+    i = new int.Integer (-123456)
+    j = new int.Integer(1)
+    k = new int.Integer(333)
+    l = new int.Integer(-1)
+    m = new int.Integer(222)
+    n = new int.Integer(111)
+    o = new int.Integer(0)
     o.sign = '-'
+    p = new int.Integer(4)
+    q = new int.Integer(7)
     done();
   });
   
@@ -225,10 +227,8 @@ describe('Methods for Integers', function(){
     it('should fail if either a or b or both are not defined (cannot be ordered)', function(done){
       // Implement some sort of test here
       done();
-    });
-    
+    }); 
   });
-  
   
   describe('add(a,b)',function(){
     
@@ -274,10 +274,7 @@ describe('Methods for Integers', function(){
       assert.equal(0, int.add(a,i).toFloat());
       done();
     });
-    
   });
-  
-  
   
   describe('subtract(a,b)',function(){
     it('should return the correct result if a > b > 0', function(done){
@@ -314,9 +311,7 @@ describe('Methods for Integers', function(){
       assert.equal(0, int.subtract(e,e).toFloat());
       done();
     });
-    
   });
-  
   
   describe('multiply(a,b)', function(){
     it('should return 0 if either number is zero', function(done){
@@ -369,69 +364,66 @@ describe('Methods for Integers', function(){
       assert.deepEqual(e, int.multiply(l,k));
       done();
     });
-    
   });
   
-  
-  describe('frac(a,b)', function(){
+  describe('quotient(a,b)', function(){
     
     it('should return the same number if dividing by one', function(done){
-      assert.deepEqual(a, int.frac(a,j));
-      assert.deepEqual(f, int.frac(f,j));
-      assert.deepEqual(g, int.frac(g,j));
-      assert.deepEqual(b, int.frac(b,j));
+      assert.deepEqual(a, int.quotient(a,j));
+      assert.deepEqual(f, int.quotient(f,j));
+      assert.deepEqual(g, int.quotient(g,j));
+      assert.deepEqual(b, int.quotient(b,j));
       done();
     });
     
     
     it('should return 0 when 0 is the numerator', function(done){
-      assert.deepEqual(g, int.frac(g, a));
-      assert.deepEqual(g, int.frac(g, f));
-      assert.deepEqual(g, int.frac(g, e));
-      assert.deepEqual(g, int.frac(g, j));
+      assert.deepEqual(g, int.quotient(g, a));
+      assert.deepEqual(g, int.quotient(g, f));
+      assert.deepEqual(g, int.quotient(g, e));
+      assert.deepEqual(g, int.quotient(g, j));
       done();
     });
     
     it('should return 0 when a,b > 0 && b > a', function(done){
-      assert.deepEqual(g, int.frac(b,a));
-      assert.deepEqual(g, int.frac(j,d));
-      assert.deepEqual(g, int.frac(d,b));
+      assert.deepEqual(g, int.quotient(b,a));
+      assert.deepEqual(g, int.quotient(j,d));
+      assert.deepEqual(g, int.quotient(d,b));
       done();
     });
     
     it('should divide two positive numbers correctly', function(done){
-      assert.equal(1, int.frac(b,d).toFloat());
-      assert.equal(278, int.frac(a,h).toFloat());
-      assert.equal(185, int.frac(a,b).toFloat());
-      assert.equal(370, int.frac(a,k).toFloat());
+      assert.equal(1, int.quotient(b,d).toFloat());
+      assert.equal(278, int.quotient(a,h).toFloat());
+      assert.equal(185, int.quotient(a,b).toFloat());
+      assert.equal(370, int.quotient(a,k).toFloat());
       done();
     });
     
     it('should return a negative number when dividing a negative number by a positive number', function(done){
-      assert.equal(-370, int.frac(a,e).toFloat());
-      assert.equal(-2, int.frac(b,e).toFloat());
-      assert.equal(-1, int.frac(a,i).toFloat());
-      assert.equal(-16, int.frac(a,f).toFloat());
+      assert.equal(-370, int.quotient(a,e).toFloat());
+      assert.equal(-2, int.quotient(b,e).toFloat());
+      assert.equal(-1, int.quotient(a,i).toFloat());
+      assert.equal(-16, int.quotient(a,f).toFloat());
       done();
     });
     
     it('should return 1 if dividing a number by itself', function(done){
-      assert.deepEqual(j, int.frac(a,a));
-      assert.deepEqual(j, int.frac(e,e));
-      assert.deepEqual(j, int.frac(i,i));
-      assert.deepEqual(j, int.frac(j,j));
-      assert.deepEqual(j, int.frac(l,l));
+      assert.deepEqual(j, int.quotient(a,a));
+      assert.deepEqual(j, int.quotient(e,e));
+      assert.deepEqual(j, int.quotient(i,i));
+      assert.deepEqual(j, int.quotient(j,j));
+      assert.deepEqual(j, int.quotient(l,l));
       done();
     });
     
     it('should return a positive number if dividing two negative numbers', function(done){
-      assert.equal(22, int.frac(f,e).toFloat());
-      assert.equal(16, int.frac(i,f).toFloat());
-      assert.equal(370, int.frac(i,e).toFloat());
+      assert.equal(22, int.quotient(f,e).toFloat());
+      assert.equal(16, int.quotient(i,f).toFloat());
+      assert.equal(370, int.quotient(i,e).toFloat());
       done();
     });
   });
-  
 
   describe('mod(a,b)', function(){
 
@@ -495,7 +487,58 @@ describe('Methods for Integers', function(){
       assert.deepEqual(f, int.mod(f,i))
       done()
     })
-
   })
+
+  describe('pow(a,b)', function(){
+    it('should return a if b===1', function(done){
+      assert.deepEqual(a, int.pow(a,j))
+      assert.deepEqual(b, int.pow(b,j))
+      assert.deepEqual(g, int.pow(g,j))
+      assert.deepEqual(j, int.pow(j,j))
+      assert.deepEqual(i, int.pow(i,j))
+      assert.deepEqual(f, int.pow(f,j))
+      done()
+    })
+
+    it('should return 1 if b=== +-0', function(done){
+      assert.deepEqual(j, int.pow(n,g))
+      assert.deepEqual(j, int.pow(f,g))
+      assert.deepEqual(j, int.pow(h,g))
+      assert.deepEqual(j, int.pow(a,g))
+      assert.deepEqual(j, int.pow(n,o))
+      assert.deepEqual(j, int.pow(f,o))
+      assert.deepEqual(j, int.pow(h,o))
+      assert.deepEqual(j, int.pow(a,o))
+      done()
+    })
+
+    it('should return the correct value if a,b>0', function(done){
+      assert.equal(2401, int.pow(q,p).toFloat())
+      assert.equal(16384, int.pow(p,q).toFloat())
+      assert.equal(151807041, int.pow(n,p).toFloat())
+      assert.equal("437104634676747795452235896466702336",int.pow(a,q).toString())
+      done()
+    })
+
+    it('should return correct n>0 if a<0 and b%2 === 0', function(done){
+      assert.equal(12296370321, int.pow(e,p).toFloat())
+      assert.equal(3062374041915841, int.pow(f,p).toFloat())
+      done()
+    })
+
+    it('should return correct n<0 if a<0 and b%2 === 0', function(done){
+      assert.equal("-454056225438947877", int.pow(e,q).toString())
+      assert.equal("-1260671430649276124479866479", int.pow(f,q).toString())
+      done()
+    })
+
+    it('should throw an error if b<-0', function(done){
+      assert.throws(function(){
+        int.pow(d,e)
+      },Error)
+      done()
+    })
+  })
+
 
 });
