@@ -1,7 +1,7 @@
 {
-  "name": "arbitrary-int",
-  "version": "0.0.1",
-  "description": "A small Javascript library enabling arbitrarily large integers, and operations for them.",
+  "name": "z-math",
+  "version": "0.1.0",
+  "description": "A simple module for operations on arbitrarily large integers, because sometimes 64-bit floats don't quite cut it.",
   "main": "main.js",
   "dependencies": {
     "clone": "^1.0.2"
@@ -17,7 +17,9 @@
     "integers",
     "natural",
     "numbers",
-    "math"
+    "math",
+    "z",
+    "z-math"
   ],
   "author": "Joshua Caron",
   "license": "MIT"
