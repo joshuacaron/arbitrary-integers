@@ -19,6 +19,7 @@ module.exports = {
   , lte: is.lte
   , mod:  div.mod
   , multiply:  multiply
+  , notEqual: is.notEqual
   , pow:  power
   , subtract:  subtract
 }

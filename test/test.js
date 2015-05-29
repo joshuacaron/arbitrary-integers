@@ -379,8 +379,7 @@ describe('Methods for Integers', function(){
       assert.deepEqual(g, int.quotient(g,j))
       assert.deepEqual(b, int.quotient(b,j))
       done()
-    })
-    
+    }) 
     
     it('should return 0 when 0 is the numerator', function(done){
       assert.deepEqual(g, int.quotient(g, a))
@@ -426,6 +425,19 @@ describe('Methods for Integers', function(){
       assert.equal(22, int.quotient(f,e).toFloat())
       assert.equal(16, int.quotient(i,f).toFloat())
       assert.equal(370, int.quotient(i,e).toFloat())
+      done()
+    })
+
+    it('should throw an error if you try to divide by 0 or -0', function(done){
+      assert.throws(function(){
+        int.quotient(a,g)
+        int.quotient(b,g)
+        int.quotient(e,g)
+        int.quotient(f,g)
+        int.quotient(k,o)
+        int.quotient(l,o)
+        int.quotient(m,o)
+      }, Error)
       done()
     })
   })
