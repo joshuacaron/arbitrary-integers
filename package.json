@@ -1,6 +1,6 @@
 {
   "name": "z-math",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple module for operations on arbitrarily large integers, because sometimes 64-bit floats don't quite cut it.",
   "main": "main.js",
   "dependencies": {
@@ -13,6 +13,14 @@
   "scripts": {
     "test": "mocha"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshuacaron/z-math.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joshuacaron/z-math/issues"
+  },
+  "homepage": "https://github.com/joshuacaron/z-math",
   "keywords": [
     "integers",
     "natural",
@@ -21,6 +29,6 @@
     "z",
     "z-math"
   ],
-  "author": "Joshua Caron <joshua@joshuacaron.ca>",
+  "author": "Joshua Caron <joshua@joshuacaron.ca> (https://www.joshuacaron.ca)",
   "license": "MIT"
 }
