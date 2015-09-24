@@ -1,6 +1,8 @@
 z-math
 ======
 
+[![Build Status](https://travis-ci.org/joshuacaron/z-math.svg?branch=master)](https://travis-ci.org/joshuacaron/z-math)
+
 A simple module for operations on arbitrarily large integers, because sometimes 64-bit floats don't quite cut it. In future versions, I plan to add support for operations on Z_n (i.e. modular arithmetic and multiplication), as well as some common number theory algorithms such as calculating gcd, lcm, etc.
 
 Usage
