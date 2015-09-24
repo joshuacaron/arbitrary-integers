@@ -27,5 +27,5 @@ To test equality/inequality there are a number of functions: `int.greaterThan`, 
 
 Note that you can use `int.lte` and `int.gte` as shortcuts for `int.lessThanEqual` and `int.greaterThanEqual` respectively.
 
-**All of these operations return new integers and leave the original ones untouched.** If you are developing your own operations and want similar operations the `clone` package will probably be a great deal of help to you.
+**All of these operations return new integers and leave the original ones untouched.** If you are developing your own operations and want similar operations the `clone` package will probably be a great deal of help to you. 
  
