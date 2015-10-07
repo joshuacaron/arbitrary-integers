@@ -6,20 +6,19 @@ var div = require('./lib/divide.js')
 var multiply = require('./lib/multiply.js')
 var power = require('./lib/power.js')
 
-module.exports = {
-    Integer:  Integer
-  , add:  add
-  , equal:  is.equal
-  , quotient:  div.quotient
-  , greaterThan:  is.greaterThan
-  , greaterThanEqual:  is.gte
-  , gte:  is.gte
-  , lessThan:  is.lessThan
-  , lessThanEqual: is.lte
-  , lte: is.lte
-  , mod:  div.mod
-  , multiply:  multiply
-  , notEqual: is.notEqual
-  , pow:  power
-  , subtract:  subtract
-}
+Integer.add = add
+Integer.equal = is.equal
+Integer.quotient = div.quotient
+Integer.greaterThan = is.greaterThan
+Integer.greaterThanEqual = is.gte
+Integer.gte = is.gte
+Integer.lessThan = is.lessThan
+Integer.lessThanEqual = is.lte
+Integer.lte = is.lte
+Integer.mod = div.mod
+Integer.multiply = multiply
+Integer.notEqual = is.notEqual
+Integer.pow = power
+Integer.subtract = subtract
+
+module.exports = Integer
