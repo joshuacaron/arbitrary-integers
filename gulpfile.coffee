@@ -2,11 +2,16 @@ gulp = require 'gulp'
 babel = require 'gulp-babel'
 plumber = require 'gulp-plumber'
 sourcemaps = require 'gulp-sourcemaps'
+format = require 'format-error'
+  .format
 
 gulp.task 'build', =>
-  gulp.src 'src/*'
+  x = gulp.src 'src/*'
   .pipe sourcemaps.init()
-  .pipe babel()
+  y = x.pipe babel()
+  y.on 'error', (err) =>
+    console.error(format(err))
+    y.end()
   .pipe sourcemaps.write '.'
   .pipe gulp.dest 'lib'
 
