@@ -12,11 +12,13 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.1",
     "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "source-map-support": "^0.3.2"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel/register"
+    "test": "mocha --require source-map-support/register"
   },
   "repository": {
     "type": "git",
