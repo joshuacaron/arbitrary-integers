@@ -1,42 +1,38 @@
-'use strict';
-
-var integer = require('./factory.js');
+var integer = require('./factory.js')
 
 function greaterThanEq(a, b) {
   if (a.sign === '+' && b.sign === '-') {
-    return true;
+    return true
   } else if (a.sign === '-' && b.sign === '+') {
-    return false;
+    return false
   } else if (a.sign === '-' && b.sign === '-') {
-    return !greaterThanEq(integer(a.value), integer(b.value));
+    return !greaterThanEq(integer(a.value), integer(b.value))
   } else if (a.digits > b.digits) {
-    return true;
+    return true
   } else if (b.digits > a.digits) {
-    return false;
+    return false
   } else {
     for (var i = 0; i < a.digits; ++i) {
       if (a.value[i] > b.value[i]) {
-        return true;
+        return true
       } else if (b.value[i] > a.value[i]) {
-        return false;
+        return false
       }
     }
-    return true;
+    return true
   }
 }
 
 function equal(a, b) {
-  return a.sign === b.sign && a.digits === b.digits && a.value.every(function (x, i) {
-    return a.value[i] === b.value[i];
-  });
+  return a.sign === b.sign && a.digits === b.digits && a.value.every(function(x, i) {return a.value[i] === b.value[i]})
 }
 
 function notEqual(a, b) {
-  return !equal(a, b);
+  return !equal(a,b)
 }
 
 module.exports = {
-  greaterThanEq: greaterThanEq,
-  equal: equal,
-  notEqual: notEqual
-};
+  greaterThanEq,
+  equal,
+  notEqual
+}
