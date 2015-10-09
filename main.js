@@ -1,5 +1,7 @@
 'use strict'
 
+require('babel/polyfill')
+
 var integer = require('./lib/factory.js')
 var add = require('./lib/add.js')
 // var subtract = require('./lib/subtract.js')
