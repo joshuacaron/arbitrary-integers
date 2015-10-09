@@ -50,7 +50,7 @@ function addHelper(x, y, c=[], round=false) {
     x.pop()
     y.pop()
     return addHelper(x, y, c, true)
-  } else if (num > 0 && index === 0) {
+  } else if (num >= 0 && index === 0) {
     c = num.toString().split('').map(function(a) {return parseInt(a)}).concat(c)
     return c
   } else {
