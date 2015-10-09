@@ -280,51 +280,51 @@ describe('Methods for Integers', function() {
     })
   })
 
-  // describe('multiply(a,b)', function() {
-  //   it('should return 0 if either number is zero', function() {
-  //     assert.deepEqual(g, integer.multiply(a,g))
-  //     assert.deepEqual(g, integer.multiply(g,e))
-  //     assert.deepEqual(g, integer.multiply(g,g))
-  //   })
+  describe('multiply(a,b)', function() {
+    it('should return 0 if either number is zero', function() {
+      assert.deepEqual(g.value, integer.multiply(a,g).value)
+      assert.deepEqual(g.value, integer.multiply(g,e).value)
+      assert.deepEqual(g.value, integer.multiply(g,g).value)
+    })
 
-  //   it('should return the other input, if one of the inputs is one, and the other is non-zero', function() {
-  //     assert.deepEqual(a, integer.multiply(a,j))
-  //     assert.deepEqual(e, integer.multiply(e,j))
-  //     assert.deepEqual(j, integer.multiply(j,j))
-  //     assert.deepEqual(i, integer.multiply(j,i))
-  //   })
+    it('should return the other input, if one of the inputs is one, and the other is non-zero', function() {
+      assert.deepEqual(a, integer.multiply(a,j))
+      assert.deepEqual(e, integer.multiply(e,j))
+      assert.deepEqual(j, integer.multiply(j,j))
+      assert.deepEqual(i, integer.multiply(j,i))
+    })
 
-  //   it('should return a positive product if both inputs are positive', function() {
-  //     assert.equal(295704, integer.multiply(b,d))
-  //     assert.equal(54814464, integer.multiply(a,d))
-  //     assert.equal(123456, integer.multiply(j,a))
-  //   })
+    it('should return a positive product if both inputs are positive', function() {
+      assert.equal(295704, integer.multiply(b,d).valueOf())
+      assert.equal(54814464, integer.multiply(a,d))
+      assert.equal(123456, integer.multiply(j,a))
+    })
 
-  //   it('should return a positive product if both inputs are negative', function() {
-  //     assert.equal(2477187, integer.multiply(e,f))
-  //     assert.equal(41110848, integer.multiply(i,e))
-  //     assert.equal(918389184, integer.multiply(f,i))
-  //   })
+    it('should return a positive product if both inputs are negative', function() {
+      assert.equal(2477187, integer.multiply(e,f))
+      assert.equal(41110848, integer.multiply(i,e))
+      assert.equal(918389184, integer.multiply(f,i))
+    })
 
-  //   it('should return a negative product if only one input is negative', function() {
-  //     assert.equal(-221778, integer.multiply(b,e))
-  //     assert.equal(-3302916, integer.multiply(f,d))
-  //     assert.equal(-15241383936, integer.multiply(a,i))
-  //   })
+    it('should return a negative product if only one input is negative', function() {
+      assert.equal(-221778, integer.multiply(b,e))
+      assert.equal(-3302916, integer.multiply(f,d))
+      assert.equal(-15241383936, integer.multiply(a,i))
+    })
 
-  //   it('should be symmetric', function() {
-  //     assert.deepEqual(integer.multiply(a,f), integer.multiply(f,a))
-  //     assert.deepEqual(integer.multiply(b,e), integer.multiply(e,b))
-  //     assert.deepEqual(integer.multiply(i,g), integer.multiply(g,i))
-  //     assert.deepEqual(integer.multiply(d,h), integer.multiply(h,d))
-  //     assert.deepEqual(integer.multiply(a,a), integer.multiply(a,a))
-  //   })
+    it('should be symmetric', function() {
+      assert.deepEqual(integer.multiply(a,f), integer.multiply(f,a))
+      assert.deepEqual(integer.multiply(b,e), integer.multiply(e,b))
+      assert.deepEqual(integer.multiply(i,g), integer.multiply(g,i))
+      assert.deepEqual(integer.multiply(d,h), integer.multiply(h,d))
+      assert.deepEqual(integer.multiply(a,a), integer.multiply(a,a))
+    })
 
-  //   it('should return -num if the other number is -1', function() {
-  //     assert.deepEqual(i, integer.multiply(a,l))
-  //     assert.deepEqual(e, integer.multiply(l,k))
-  //   })
-  // })
+    it('should return -num if the other number is -1', function() {
+      assert.deepEqual(i, integer.multiply(a,l))
+      assert.deepEqual(e, integer.multiply(l,k))
+    })
+  })
 
   // describe('quotient(a,b)', function() {
 
