@@ -18,7 +18,8 @@
     "source-map-support": "^0.3.2"
   },
   "scripts": {
-    "test": "mocha --require source-map-support/register"
+    "test": "mocha --require source-map-support/register",
+    "jsdoc": "jsdoc src -R README.md -d docs"
   },
   "repository": {
     "type": "git",
