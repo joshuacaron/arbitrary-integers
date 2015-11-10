@@ -326,124 +326,124 @@ describe('Methods for Integers', function() {
     })
   })
 
-  // describe('quotient(a,b)', function() {
+  describe('quotient(a,b)', function() {
 
-  //   it('should return the same number if dividing by one', function() {
-  //     assert.deepEqual(a, integer.quotient(a,j))
-  //     assert.deepEqual(f, integer.quotient(f,j))
-  //     assert.deepEqual(g, integer.quotient(g,j))
-  //     assert.deepEqual(b, integer.quotient(b,j))
-  //   })
+    it('should return the same number if dividing by one', function() {
+      assert.deepEqual(a, integer.quotient(a,j))
+      assert.deepEqual(f, integer.quotient(f,j))
+      assert.deepEqual(g, integer.quotient(g,j))
+      assert.deepEqual(b, integer.quotient(b,j))
+    })
 
-  //   it('should return 0 when 0 is the numerator', function() {
-  //     assert.deepEqual(g, integer.quotient(g, a))
-  //     assert.deepEqual(g, integer.quotient(g, f))
-  //     assert.deepEqual(g, integer.quotient(g, e))
-  //     assert.deepEqual(g, integer.quotient(g, j))
-  //   })
+    it('should return 0 when 0 is the numerator', function() {
+      assert.deepEqual(g, integer.quotient(g, a))
+      assert.deepEqual(g, integer.quotient(g, f))
+      assert.deepEqual(g, integer.quotient(g, e))
+      assert.deepEqual(g, integer.quotient(g, j))
+    })
 
-  //   it('should return 0 when a,b > 0 && b > a', function() {
-  //     assert.deepEqual(g, integer.quotient(b,a))
-  //     assert.deepEqual(g, integer.quotient(j,d))
-  //     assert.deepEqual(g, integer.quotient(d,b))
-  //   })
+    it('should return 0 when a,b > 0 && b > a', function() {
+      assert.deepEqual(g, integer.quotient(b,a))
+      assert.deepEqual(g, integer.quotient(j,d))
+      assert.deepEqual(g, integer.quotient(d,b))
+    })
 
-  //   it('should divide two positive numbers correctly', function() {
-  //     assert.equal(1, integer.quotient(b,d))
-  //     assert.equal(278, integer.quotient(a,h))
-  //     // assert.equal(185, integer.quotient(a,b))
-  //     // assert.equal(370, integer.quotient(a,k))
-  //   })
+    it('should divide two positive numbers correctly', function() {
+      assert.deepEqual(integer(1), integer.quotient(b,d))
+      assert.deepEqual(integer(278), integer.quotient(a,h))
+      // assert.equal(185, integer.quotient(a,b))
+      // assert.equal(370, integer.quotient(a,k))
+    })
 
-  //   it('should return a negative number when dividing a negative number by a positive number', function() {
-  //     assert.equal(-370, integer.quotient(a,e))
-  //     assert.equal(-2, integer.quotient(b,e))
-  //     assert.equal(-1, integer.quotient(a,i))
-  //     assert.equal(-16, integer.quotient(a,f))
-  //   })
+    it('should return a negative number when dividing a negative number by a positive number', function() {
+      assert.equal(-370, integer.quotient(a,e))
+      assert.equal(-2, integer.quotient(b,e))
+      assert.equal(-1, integer.quotient(a,i))
+      assert.equal(-16, integer.quotient(a,f))
+    })
 
-  //   it('should return 1 if dividing a number by itself', function() {
-  //     assert.deepEqual(j, integer.quotient(a,a))
-  //     assert.deepEqual(j, integer.quotient(e,e))
-  //     assert.deepEqual(j, integer.quotient(i,i))
-  //     assert.deepEqual(j, integer.quotient(j,j))
-  //     assert.deepEqual(j, integer.quotient(l,l))
-  //   })
+    it('should return 1 if dividing a number by itself', function() {
+      assert.deepEqual(j, integer.quotient(a,a))
+      assert.deepEqual(j, integer.quotient(e,e))
+      assert.deepEqual(j, integer.quotient(i,i))
+      assert.deepEqual(j, integer.quotient(j,j))
+      assert.deepEqual(j, integer.quotient(l,l))
+    })
 
-  //   it('should return a positive number if dividing two negative numbers', function() {
-  //     assert.equal(22, integer.quotient(f,e))
-  //     assert.equal(16, integer.quotient(i,f))
-  //     assert.equal(370, integer.quotient(i,e))
-  //   })
+    it('should return a positive number if dividing two negative numbers', function() {
+      assert.equal(22, integer.quotient(f,e))
+      assert.equal(16, integer.quotient(i,f))
+      assert.equal(370, integer.quotient(i,e))
+    })
 
-  //   it('should throw an error if you try to divide by 0 or -0', function() {
-  //     assert.throws(function() {
-  //       integer.quotient(a,g)
-  //       integer.quotient(b,g)
-  //       integer.quotient(e,g)
-  //       integer.quotient(f,g)
-  //       integer.quotient(k,o)
-  //       integer.quotient(l,o)
-  //       integer.quotient(m,o)
-  //     }, Error)
-  //   })
-  // })
+    it('should throw an error if you try to divide by 0 or -0', function() {
+      assert.throws(function() {
+        integer.quotient(a,g)
+        integer.quotient(b,g)
+        integer.quotient(e,g)
+        integer.quotient(f,g)
+        integer.quotient(k,o)
+        integer.quotient(l,o)
+        integer.quotient(m,o)
+      }, Error)
+    })
+  })
 
-  // describe('mod(a,b)', function() {
+  describe('mod(a,b)', function() {
 
-  //   it('should return 0 if a is a multiple of b', function() {
-  //     assert.deepEqual(g, integer.mod(h,n))
-  //     assert.deepEqual(g, integer.mod(k,n))
-  //     assert.deepEqual(g, integer.mod(m,n))
-  //     assert.deepEqual(g, integer.mod(b,k))
-  //     assert.deepEqual(g, integer.mod(h,m))
-  //   })
+    it('should return 0 if a is a multiple of b', function() {
+      assert.deepEqual(g, integer.mod(h,n))
+      assert.deepEqual(g, integer.mod(k,n))
+      assert.deepEqual(g, integer.mod(m,n))
+      assert.deepEqual(g, integer.mod(b,k))
+      assert.deepEqual(g, integer.mod(h,m))
+    })
 
-  //   it('should return the correct value of a,b > 0, a > b', function() {
-  //     assert.deepEqual(n, integer.mod(h,k))
-  //     assert.deepEqual(m, integer.mod(b,d))
-  //     assert.equal(246, integer.mod(a,b))
-  //   })
+    it('should return the correct value of a,b > 0, a > b', function() {
+      assert.deepEqual(n, integer.mod(h,k))
+      assert.deepEqual(m, integer.mod(b,d))
+      assert.equal(246, integer.mod(a,b))
+    })
 
-  //   it('should return 0 if b=1', function() {
-  //     assert.deepEqual(g, integer.mod(a,j))
-  //     assert.deepEqual(g, integer.mod(k,j))
-  //     assert.deepEqual(g, integer.mod(b,j))
-  //     assert.deepEqual(g, integer.mod(n,j))
-  //   })
+    it('should return 0 if b=1', function() {
+      assert.deepEqual(g, integer.mod(a,j))
+      assert.deepEqual(g, integer.mod(k,j))
+      assert.deepEqual(g, integer.mod(b,j))
+      assert.deepEqual(g, integer.mod(n,j))
+    })
 
-  //   it('should return 0 if a === b and a > 0', function() {
-  //     assert.deepEqual(g, integer.mod(a,a))
-  //     assert.deepEqual(g, integer.mod(h,h))
-  //   })
+    it('should return 0 if a === b and a > 0', function() {
+      assert.deepEqual(g, integer.mod(a,a))
+      assert.deepEqual(g, integer.mod(h,h))
+    })
 
-  //   it('should return -0 if a===b and a < 0', function() {
-  //     assert.deepEqual(o, integer.mod(e,e))
-  //     assert.deepEqual(o, integer.mod(i,i))
-  //   })
+    it('should return 0 if a===b and a < 0', function() {
+      assert.deepEqual(g, integer.mod(e,e))
+      assert.deepEqual(g, integer.mod(i,i))
+    })
 
-  //   it('should return a if a < b and b > 0', function() {
-  //     assert.deepEqual(b, integer.mod(b,a))
-  //     assert.deepEqual(d, integer.mod(d,a))
-  //     assert.deepEqual(k, integer.mod(k,a))
-  //     assert.deepEqual(k, integer.mod(k,b))
-  //     assert.deepEqual(d, integer.mod(d,b))
-  //     assert.deepEqual(e, integer.mod(e,a))
-  //     assert.deepEqual(e, integer.mod(e,b))
-  //   })
+    it('should return a if a < b and b > 0', function() {
+      assert.deepEqual(b, integer.mod(b,a))
+      assert.deepEqual(d, integer.mod(d,a))
+      assert.deepEqual(k, integer.mod(k,a))
+      assert.deepEqual(k, integer.mod(k,b))
+      assert.deepEqual(d, integer.mod(d,b))
+      assert.deepEqual(k, integer.mod(e,a))
+      assert.deepEqual(k, integer.mod(e,b))
+    })
 
-  //   it('should return the correct value if a < b < 0', function() {
-  //     assert.equal(-246, integer.mod(i,e))
-  //     assert.equal(-4432, integer.mod(i,f))
-  //     assert.equal(-113, integer.mod(f,e))
-  //   })
+    it('should return the correct value if a < b < 0', function() {
+      assert.equal(-246, integer.mod(i,e))
+      assert.equal(-4432, integer.mod(i,f))
+      assert.equal(-113, integer.mod(f,e))
+    })
 
-  //   it('should return a if b < a < 0', function() {
-  //     assert.deepEqual(e, integer.mod(e,i))
-  //     assert.deepEqual(e, integer.mod(e,f))
-  //     assert.deepEqual(f, integer.mod(f,i))
-  //   })
-  // })
+    it('should return a if b < a < 0', function() {
+      assert.deepEqual(e, integer.mod(e,i))
+      assert.deepEqual(e, integer.mod(e,f))
+      assert.deepEqual(f, integer.mod(f,i))
+    })
+  })
 
   // describe('pow(a,b)', function() {
   //   it('should return a if b===1', function() {
