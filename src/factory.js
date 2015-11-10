@@ -49,11 +49,7 @@ function integer(num = [], sign = '+') {
     output.sign = sign
 
     // Avoids having values of form [0,0,0....]
-    if (output.value.every(function(a) {
-      return a === 0
-    }) && output.value.length > 0) {
-      output.value = [0]
-    }
+    output.value = removeLeadingZeroes(output.value)
 
   } else {
     var digits = num.toString().split('')
@@ -67,14 +63,29 @@ function integer(num = [], sign = '+') {
     if (digits[0] === '+' || digits[0] === '-') {
       output.sign = digits[0]
       digits.shift()
-      output.value = digits
+      output.value = removeLeadingZeroes(digits)
     } else {
       output.sign = sign
-      output.value = digits
+      output.value = removeLeadingZeroes(digits)
     }
   }
   return Object.freeze(output)
 }
+
+function removeLeadingZeroes(xs) {
+  var output = []
+  for (var i = 0; i < xs.length; ++i) {
+    if (xs[i] !== 0 || output.length !== 0) {
+      output.push(xs[i])
+    }
+  }
+  // Add zero incase if the original array is all zeroes
+  if (output.length === 0 && xs.length > 0) {
+    output.push(0)
+  }
+  return output
+}
+
 
 /**
  * Export integer factory function

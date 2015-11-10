@@ -1,6 +1,5 @@
 gulp = require 'gulp'
 babel = require 'gulp-babel'
-plumber = require 'gulp-plumber'
 sourcemaps = require 'gulp-sourcemaps'
 format = require 'format-error'
   .format
